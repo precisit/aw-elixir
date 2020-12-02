@@ -1,21 +1,9 @@
 # Poker
 
-**TODO: Add description**
+Elixir source for solving Euler problem no. 54.
 
-## Installation
+## Build
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `poker` to your list of dependencies in `mix.exs`:
+Use `mix compile` to compile source. Use `mix test` to run tests.
 
-```elixir
-def deps do
-  [
-    {:poker, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/poker](https://hexdocs.pm/poker).
-
+Use `iex -S mix` to start an interactive shell for the project. Use `recompile()` to compile sources again from the shell. Modules under `/lib` are available by name, i.e. `Card.parseCard("2H")`.
