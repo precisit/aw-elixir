@@ -36,9 +36,62 @@ defmodule Poker do
     # Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
   end
 
-  def is_straight(hand) do
-    sorted = hand
+  def sort_hand(hand) do
+    hand
     |> Enum.sort(fn card1,card2 -> card1.value < card2.value end)
+  end
+
+  def is_pair(hand) do
+    case find_sets(hand) do
+      [{_,2}] -> true
+      _ -> false
+    end
+  end
+
+  def is_two_pairs(hand) do
+    case find_sets(hand) do
+      [{_,2}, {_,2}] -> true
+      _ -> false
+    end
+  end
+
+  def is_three_of_kind(hand) do
+    case find_sets(hand) do
+      [{_,3}] -> true
+      _ -> false
+    end
+  end
+
+  def is_four_of_kind(hand) do
+    case find_sets(hand) do
+      [{_,4}] -> true
+      _ -> false
+    end
+  end
+
+  def is_full_house(hand) do
+    case find_sets(hand) do
+      [{_,3},{_,2}] -> true
+      _ -> false
+    end
+  end
+
+  def count_cards_of_value(hand,value) do
+    hand
+    |> Enum.map(fn c -> c.value end)
+    |> Enum.filter(fn cval -> cval == value end)
+    |> Enum.count()
+  end
+
+  def find_sets(hand) do
+    2..14
+    |>Enum.map(fn val -> {val, count_cards_of_value(hand, val)} end)
+    |>Enum.filter(fn {_, count} -> count > 1 end)
+    |>Enum.sort(fn {_, count1}, {_, count2} -> count1 > count2 end)
+  end
+
+  def is_straight(hand) do
+    sorted = sort_hand(hand)
 
     sorted
     |> Enum.zip(Enum.drop(sorted,1))
