@@ -1,21 +1,4 @@
 defmodule Poker do
-  @moduledoc """
-  Documentation for `Poker`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Poker.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
-
   def main() do
     parser()
     |> to_cards()
@@ -41,17 +24,16 @@ defmodule Poker do
   end
 
   def compare_hands({hand1, hand2}) do
-# High Card: Highest value card.
-# One Pair: Two cards of the same value.
-# Two Pairs: Two different pairs.
-# Three of a Kind: Three cards of the same value.
-# Straight: All cards are consecutive values.
-# Flush: All cards of the same suit.
-# Full House: Three of a kind and a pair.
-# Four of a Kind: Four cards of the same value.
-# Straight Flush: All cards are consecutive values of same suit.
-# Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
-
+    # High Card: Highest value card.
+    # One Pair: Two cards of the same value.
+    # Two Pairs: Two different pairs.
+    # Three of a Kind: Three cards of the same value.
+    # Straight: All cards are consecutive values.
+    # Flush: All cards of the same suit.
+    # Full House: Three of a kind and a pair.
+    # Four of a Kind: Four cards of the same value.
+    # Straight Flush: All cards are consecutive values of same suit.
+    # Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
   end
 
   def is_straight(hand) do
@@ -71,11 +53,4 @@ defmodule Poker do
   end
 
   def is_straight_flush(hand), do: is_straight(hand) and is_flush(hand)
-
-#  def has_pair(hand,config) do
-#    hand
-#  end
-#
-#  def is_full_house(hand), do: has_pair(hand, [2]) and has_triplet(hand,[3])
-
 end
